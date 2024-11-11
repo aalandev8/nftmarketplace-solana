@@ -1,41 +1,41 @@
 import mongoose from 'mongoose';
 
 const nftSchema = new mongoose.Schema({
-    mintAddress: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    name: {
-        type: String,
-        required: true,
-    },
-    description: String,
-    image: String,
-    creator: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-    },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+        required: true
+    },
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    mintAddress: {
+        type: String,
         required: true,
+        unique: true
     },
-    price: {
-        type: Number,
-        default: 0,
+    name: {
+        type: String,
+        required: true
     },
-    isListed: {
-        type: Boolean,
-        default: false,
+    description: {
+        type: String,
+        required: false
     },
-    royalties: {
-        type: Number,
-        default: 0, // percentage
+    imageUrl: {
+        type: String,
+        required: true
     },
-}, {
-    timestamps: true,
+    attributes: [{
+        trait_type: String,
+        value: String
+    }],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 export const NFT = mongoose.models.NFT || mongoose.model('NFT', nftSchema);
