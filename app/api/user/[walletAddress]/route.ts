@@ -2,10 +2,8 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/back/lib/mongodb';
 import { UserController } from '@/back/controllers/user.controller';
 
-export async function GET(
-    request: Request,
-    { params }: { params: { walletAddress: string } }
-) {
+export async function GET(request: Request, props: { params: Promise<{ walletAddress: string }> }) {
+    const params = await props.params;
     try {
         await connectDB();
         const user = await UserController.getUserProfile(params.walletAddress);
