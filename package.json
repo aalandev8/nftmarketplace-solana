@@ -12,6 +12,8 @@
     "@metaplex-foundation/js": "^0.20.1",
     "@solana/web3.js": "^1.95.4",
     "dotenv": "^16.4.5",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.456.0",
     "mongoose": "^8.8.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
